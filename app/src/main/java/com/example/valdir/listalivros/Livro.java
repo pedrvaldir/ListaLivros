@@ -11,8 +11,8 @@ public class Livro {
     /** Autor do Livro */
     private String mAutor;
 
-    /** Data quem que foi publicado */
-    private String mData;
+    /** versao da publicacao do livro*/
+    private String mVersao;
 
     /** Quantidade de páginas que o livro contém */
     private String mQuantPag;
@@ -22,13 +22,13 @@ public class Livro {
      *
      * @param titulo é o nome do livro
      * @param autor é o responsável/Criador do Livro
-     * @param data se refere a Data que o livro foi publicado
+     * @param versao se refere a versao que o livro foi publicado
      * @param quantPaginas é a quantidade de páginas que o livro contém
      */
-    public Livro(String titulo, String autor, String data, String quantPaginas) {
+    public Livro(String titulo, String autor, String versao, String quantPaginas) {
         this.mTitulo = titulo;
         this.mAutor = autor;
-        this.mData = data;
+        this.mVersao = versao;
         this.mQuantPag = quantPaginas;
     }
 
@@ -47,10 +47,10 @@ public class Livro {
     }
 
     /**
-     * Retorna a data de publicacao do livro
+     * Retorna a versao da publicacao do livro
      */
-    public String getData() {
-        return mData;
+    public String getVersao() {
+        return mVersao;
     }
 
     /**

@@ -54,7 +54,7 @@ public class LivrosAdapter extends ArrayAdapter<Livro> {
         //Encontre o TextView com a ID data
         TextView dataLivro = (TextView) listaItemView.findViewById(R.id.data);
         // Mostre a data do livro atual nesta TextView
-        dataLivro.setText(livroAtual.getData());
+        dataLivro.setText(livroAtual.getVersao());
 
         //Encontre o TextView com a ID quantPag
         TextView quantPagLivro = (TextView) listaItemView.findViewById(R.id.quant_paginas);

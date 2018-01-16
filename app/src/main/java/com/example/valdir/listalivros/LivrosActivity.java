@@ -14,29 +14,37 @@ public class LivrosActivity extends AppCompatActivity {
         setContentView(R.layout.livros_activity);
 
 
+
+
+        String url = "https://www.googleapis.com/books/v1/volumes?q=search+android";
         // Cria uma lista falsa de livros
-        ArrayList<Livro> livros = new ArrayList<>();
+        //ArrayList<Livro> livros = new ArrayList<>();
 
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
-        livros.add(new Livro("titulo", "autor", "data", "123"));
+        // retorna um arrayList de livros da resposta JSON
+        ArrayList<Livro> livros = ConsultasUteis.buscarLivros(url);
 
-        // declara o Adapter e define o Array que irá alimentar
+        /**
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         *livros.add(new Livro("titulo", "autor", "data", "123"));
+         */
+
+        // declaracao do Adapter e define o Array que irá popula-lo
         LivrosAdapter livrosAdapter = new LivrosAdapter(this, livros);
 
         // Procura uma referência para o {@link ListView} no Layout livros_activity.xml
