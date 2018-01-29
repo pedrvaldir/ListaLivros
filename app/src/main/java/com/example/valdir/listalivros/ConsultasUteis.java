@@ -1,8 +1,7 @@
 package com.example.valdir.listalivros;
 // Métodos auxiliares relacionados à solicitação e recebimento de dados
 
-import android.nfc.Tag;
-import android.os.AsyncTask;
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import org.json.JSONArray;
@@ -23,7 +22,8 @@ public final class ConsultasUteis {
     /**
      * Exemplo de resposta JSON de uma consulta API GOOGLE BOOKS
      */
-    private static final String AMOSTRA_RESPOSTA_JSON = "{}";
+    //Utilizado para referenciar String na interface principal
+     private static Context mContext;
 
     public static final String LOG_TAG = LivrosActivity.class.getName();
 
@@ -31,49 +31,10 @@ public final class ConsultasUteis {
     private ConsultasUteis() {
     }
 
-    // Retorna uma lista de objetos {@link Livro} que foi construida a partir da analise JSON
-    public static ArrayList<Livro> extrairLivros() {
-
-        // Cria um ArrayList vazio para começar a adicionar
-        ArrayList<Livro> livros = new ArrayList<>();
-
-        try {
-
-            //crie uma lista de objetos livros com os dados correspondentes.
-            JSONObject baseJsonResponse = new JSONObject(AMOSTRA_RESPOSTA_JSON);
-            JSONArray livroArray = baseJsonResponse.getJSONArray("items");
-
-
-            for (int i = 0; i < livroArray.length(); i++) {
-                JSONObject livroAtual = livroArray.getJSONObject(i);
-                JSONObject informacoes = livroAtual.getJSONObject("volumeInfo");
-
-                //TODO implementar array para autor quando tiver mais de um
-                String titulo = informacoes.getString("title");
-                String autor = informacoes.getString("authors");
-                String versao = informacoes.getString("contentVersion");
-                String paginas = informacoes.getString("pageCount");
-
-                Livro livro = new Livro(titulo, autor, versao, paginas);
-                livros.add(livro);
-
-            }
-
-        }catch (JSONException e) {
-
-            e.printStackTrace();
-
-            // Se um erro for lançado ao executar qualquer uma das instruções acima no bloco "try"
-            // com a mensagem da exceção.
-            Log.e(LOG_TAG, "Problema na analise da resposta JSON", e);
-        }
-
-        // Retorna a lista de Livros
-        return livros;
-    }
-
     //Realiza a busca de livros de acordo com a url
     public static ArrayList<Livro> buscarLivros(String requisicaoUrl) {
+
+        // mContext = context;
 
         // Cria um objeto URL
         URL url = criarUrl(requisicaoUrl);
@@ -195,22 +156,26 @@ public final class ConsultasUteis {
                 JSONObject livroAtual = livroArray.getJSONObject(i);
                 JSONObject informacoes = livroAtual.getJSONObject("volumeInfo");
 
-
-                //TODO implementar array para autor quando tiver mais de um
-
                 String titulo = informacoes.getString("title");
-                String autor = informacoes.getString("authors");
+
+                String autores;
+                if(informacoes.has("authors")){
+                    JSONArray authorsArray = informacoes.getJSONArray("authors");
+                    autores = formatarAutores(authorsArray);
+                }else{
+                    autores = "não informado";
+                }
+
                 String versao = informacoes.getString("contentVersion");
                 String paginas;
-
 
                 if (informacoes.has("pageCount")){
                     paginas = informacoes.getString("pageCount");
                 }else{
-                    paginas = "naon inf";
+                    paginas = "não informado";
                 }
 
-                Livro livro = new Livro(titulo, autor, versao, paginas);
+                Livro livro = new Livro(titulo, autores, versao, paginas);
                 livros.add(livro);
             }
 
@@ -221,5 +186,27 @@ public final class ConsultasUteis {
             Log.e(LOG_TAG, "Problema ao analisar os resultados de livros da resposta JSON", e);
         }
         return null;
+    }
+
+    /**
+     * Retonar a lista String de dados
+     */
+    public static String formatarAutores(JSONArray listaAutores) throws JSONException {
+
+        String listaAutoresEmString = null;
+
+        if (listaAutores.length() == 0) {
+            return null;
+        }
+
+        for (int i = 0; i < listaAutores.length(); i++){
+            if (i == 0) {
+                listaAutoresEmString = listaAutores.getString(0);
+            } else {
+                listaAutoresEmString += ", " + listaAutores.getString(i);
+            }
+        }
+
+        return listaAutoresEmString;
     }
 }

@@ -30,36 +30,37 @@ public class LivrosAdapter extends ArrayAdapter<Livro> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         //Verifique se existe uma exibição de item de lista existente (chamada convertView) que podemos reutilizar,
         // Caso contrário, se convertView for nulo, infle um novo layout de item de lista.
         View listaItemView = convertView;
+        ViewHolder holder;
+
+
         if (listaItemView == null) {
             listaItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.item_lista_livros, parent, false);
+            holder = new ViewHolder(listaItemView);
+            listaItemView.setTag(holder);
+        }else {
+            listaItemView = convertView;
+            holder = (ViewHolder) listaItemView.getTag();
         }
 
         // Encontre o livro na posição indicada da lista.
         Livro livroAtual = getItem(position);
 
-        // Encontre o TextView com a ID titulo
-        TextView tituloLivro = (TextView) listaItemView.findViewById(R.id.titulo);
         // Mostre o titulo do livro atual nesta TextView
-        tituloLivro.setText(livroAtual.getTitulo());
+        holder.tituloLivro.setText(livroAtual.getTitulo());
 
-        //Encontre o TextView com a ID autor
-        TextView autorLivro = (TextView) listaItemView.findViewById(R.id.autor);
         // Mostre o autor do livro atual nesta TextView
-        autorLivro.setText(livroAtual.getAutor());
+        holder.autorLivro.setText(livroAtual.getAutor());
 
-        //Encontre o TextView com a ID data
-        TextView dataLivro = (TextView) listaItemView.findViewById(R.id.data);
         // Mostre a data do livro atual nesta TextView
-        dataLivro.setText(livroAtual.getVersao());
+        holder.versaoLivro.setText(livroAtual.getVersao());
 
-        //Encontre o TextView com a ID quantPag
-        TextView quantPagLivro = (TextView) listaItemView.findViewById(R.id.quant_paginas);
         // Mostre a quantidade de páginas do livro atual nesta TextView
-        quantPagLivro.setText(livroAtual.getQuantPag());
+        holder.quantPagLivro.setText(livroAtual.getQuantPag());
 
         //Retonar o item da lista em questão para ser exibido
         return listaItemView;

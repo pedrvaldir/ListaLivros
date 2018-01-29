@@ -2,32 +2,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:paddingRight="8dp">
 
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="O Código da Vinci" />
+
+        <TextView
+            android:id="@+id/autores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Autor(es)" />
+
+        <TextView
+            android:id="@+id/autor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:textSize="13sp"
+            tools:text="Dan Brown" />
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_weight="1"
-        tools:text="O Código da Vinci" />
-    <TextView
-        android:id="@+id/autor"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        tools:text="Dan Brown" />
-    <TextView
-        android:id="@+id/data"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        tools:text="05/01/1999" />
-    <TextView
-        android:id="@+id/quant_paginas"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        tools:text="230" />
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:id="@+id/LayQuantPag">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Páginas"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/quant_paginas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/versao"
+                android:layout_alignEnd="@+id/LayQuantPag"
+                android:layout_alignRight="@+id/LayQuantPag"
+                android:textSize="14sp"
+                tools:text="230" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/versao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/LayQuantPag"
+            android:layout_marginTop="18dp"
+            android:textSize="10sp"
+            tools:text="3.2.1.78.9.0." />
+    </RelativeLayout>
 </LinearLayout>
