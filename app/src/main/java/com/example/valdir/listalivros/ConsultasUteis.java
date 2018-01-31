@@ -21,13 +21,15 @@ public final class ConsultasUteis {
 
     public static final String LOG_TAG = LivrosActivity.class.getName();
 
+    private static Context mContext;
+
     //Uma instancia do objeto ConsultasUteis não será necessária, privado
     private ConsultasUteis() {
     }
 
     //Realiza a busca de livros de acordo com a url
-    public static ArrayList<Livro> buscarLivros(String requisicaoUrl) {
-
+    public static ArrayList<Livro> buscarLivros(String requisicaoUrl, Context context) {
+        mContext = context;
         // Cria um objeto URL
         URL url = criarUrl(requisicaoUrl);
 
@@ -155,7 +157,7 @@ public final class ConsultasUteis {
                     JSONArray authorsArray = informacoes.getJSONArray("authors");
                     autores = formatarAutores(authorsArray);
                 } else {
-                    autores = "não informado";
+                    autores = mContext.getResources().getString(R.string.quant_pag_vazio);
                 }
 
                 String versao = informacoes.getString("contentVersion");
@@ -164,7 +166,7 @@ public final class ConsultasUteis {
                 if (informacoes.has("pageCount")) {
                     paginas = informacoes.getString("pageCount");
                 } else {
-                    paginas = "não informado";
+                    paginas = mContext.getResources().getString(R.string.quant_pag_vazio);
                 }
 
                 Livro livro = new Livro(titulo, autores, versao, paginas);
@@ -198,6 +200,7 @@ public final class ConsultasUteis {
                 listaAutoresEmString += ", " + listaAutores.getString(i);
             }
         }
+
         return listaAutoresEmString;
     }
 }

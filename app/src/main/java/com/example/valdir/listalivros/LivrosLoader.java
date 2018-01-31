@@ -51,7 +51,7 @@ public class LivrosLoader extends AsyncTaskLoader<List<Livro>> {
         }
 
         // Realiza requisição de rede, decodifica a resposta, e extrai uma lista de earthquakes.
-        List<Livro> Livros = ConsultasUteis.buscarLivros(mUrl);
+        List<Livro> Livros = ConsultasUteis.buscarLivros(mUrl, getContext());
         return Livros;
     }
 }
