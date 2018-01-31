@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_list_padding">16dp</dimen>
+    <dimen name="texto_item_lista">13sp</dimen>
+    <dimen name="texto_titulo_item_lista">16sp</dimen>
+    <dimen name="texto_versao_item_lista">10sp</dimen>
+
+    <dimen name="texto_editText">16sp</dimen>
+    <dimen name="texto_button">12sp</dimen>
+
+    <dimen name="padding_livros_activity">8dp</dimen>
+</resources>

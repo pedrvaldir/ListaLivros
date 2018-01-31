@@ -8,4 +8,57 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AlinhamentoLayoutLista">
+
+    </style>
+
+    <!-- Titulo de cada livro na lista. -->
+    <style name="TituloItemLista">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textSize">@dimen/texto_titulo_item_lista</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Autor(es) de cada livro na lista. -->
+    <style name="AutoresItemLista">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/texto_item_lista</item>
+        <item name="android:paddingLeft">@dimen/padding_livros_activity</item>
+    </style>
+
+    <style name="PaginasitemLista">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@+id/versao</item>
+        <item name="android:layout_alignRight">@+id/LayQuantPag</item>
+        <item name="android:textSize">@dimen/texto_item_lista</item>
+    </style>
+
+    <style name="TxtAutoresPaginas">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/texto_item_lista</item>
+    </style>
+
+    <style name="VersaoItemLista">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_below">@+id/LayQuantPag</item>
+        <item name="android:layout_marginTop">16sp</item>
+        <item name="android:textSize">@dimen/texto_versao_item_lista</item>
+    </style>
+
+    <style name="LayQuantPagLista">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">right</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
 </resources>

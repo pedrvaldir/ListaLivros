@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Lista Livros</string>
     <string name="pageCountNull">Não Informado</string>
-    <string name="sem_livros">Nenhum livro encontrado!</string>
-
+    <string name="sem_conexao_internet">Sem conexão com a internet!</string>
+    <string name="primeira_pesquisa">Clique em pesquisar para realizar sua busca :)</string>
+    <string name="retorno_vazio">Nenhum livro encontrado, tente novamente!</string>
+    <string name="url_consulta">https://www.googleapis.com/books/v1/volumes?q=search+</string>
+    <string name="hint_editText">Realize uma nova pesquisa</string>
+    <string name="btn_pesquisar">pesquisar</string>
 </resources>

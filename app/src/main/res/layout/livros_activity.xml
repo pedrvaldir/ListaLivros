@@ -1,48 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="7dp"
-        android:id="@+id/linearLayout">
+        android:padding="@dimen/padding_livros_activity">
+
         <EditText
             android:id="@+id/edit_pesquisa"
             android:layout_width="0dp"
-            android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:hint="Realize uma nova pesquisa"
-            />
+            android:layout_weight="2"
+            android:hint="@string/hint_editText"
+            android:textSize="@dimen/texto_editText" />
+
         <Button
             android:id="@+id/btn_pesquisar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="12sp"
-            android:text="pesquisar"/>
+            android:text="pesquisar"
+            android:textSize="@dimen/texto_button" />
     </LinearLayout>
 
     <ListView
-        android:paddingTop="5dp"
         android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLayout"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:paddingTop="@dimen/padding_livros_activity" />
 
     <!-- View vazia é apenas visível quando a lista não tiver itens. -->
     <TextView
-        android:id="@+id/empty_view"
+        android:id="@+id/view_vazia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textAppearance="?android:textAppearanceMedium"/>
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <!-- Indicador de carregamento apenas é mostrado antes do primeiro carregamento -->
+    <ProgressBar
+        android:id="@+id/indicador_carregamento"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

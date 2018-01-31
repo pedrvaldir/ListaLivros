@@ -19,12 +19,6 @@ import java.util.ArrayList;
 
 public final class ConsultasUteis {
 
-    /**
-     * Exemplo de resposta JSON de uma consulta API GOOGLE BOOKS
-     */
-    //Utilizado para referenciar String na interface principal
-     private static Context mContext;
-
     public static final String LOG_TAG = LivrosActivity.class.getName();
 
     //Uma instancia do objeto ConsultasUteis não será necessária, privado
@@ -33,8 +27,6 @@ public final class ConsultasUteis {
 
     //Realiza a busca de livros de acordo com a url
     public static ArrayList<Livro> buscarLivros(String requisicaoUrl) {
-
-        // mContext = context;
 
         // Cria um objeto URL
         URL url = criarUrl(requisicaoUrl);
@@ -159,19 +151,19 @@ public final class ConsultasUteis {
                 String titulo = informacoes.getString("title");
 
                 String autores;
-                if(informacoes.has("authors")){
+                if (informacoes.has("authors")) {
                     JSONArray authorsArray = informacoes.getJSONArray("authors");
                     autores = formatarAutores(authorsArray);
-                }else{
+                } else {
                     autores = "não informado";
                 }
 
                 String versao = informacoes.getString("contentVersion");
                 String paginas;
 
-                if (informacoes.has("pageCount")){
+                if (informacoes.has("pageCount")) {
                     paginas = informacoes.getString("pageCount");
-                }else{
+                } else {
                     paginas = "não informado";
                 }
 
@@ -199,14 +191,13 @@ public final class ConsultasUteis {
             return null;
         }
 
-        for (int i = 0; i < listaAutores.length(); i++){
+        for (int i = 0; i < listaAutores.length(); i++) {
             if (i == 0) {
                 listaAutoresEmString = listaAutores.getString(0);
             } else {
                 listaAutoresEmString += ", " + listaAutores.getString(i);
             }
         }
-
         return listaAutoresEmString;
     }
 }
